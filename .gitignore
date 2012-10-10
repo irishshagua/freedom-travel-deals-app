@@ -1,13 +1,17 @@
-*.class
-
-# Package Files #
+# Java Binaries Files #
 *.jar
 *.war
 *.ear
+*.class
 
-# Project Files #
+# Eclipse Project Files #
 .classpath
 .project
 .settings/
 bin/
+
+# Android Files #
 gen/
+.externalToolBuilders/
+proguard-project.txt
+project.properties
