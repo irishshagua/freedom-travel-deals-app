@@ -1,0 +1,24 @@
+####################################
+#
+# Freedom Travel Deals App CMS
+#
+# These settings are crucial to the 
+# operation of the CMS application.
+# Only make changes if you know what 
+# you are changing. :)
+#
+####################################
+
+
+####################################
+# Datastore System Settings
+####################################
+datastore.api.url=https://api.mongolab.com/api/1/
+datastore.api.key=?apiKey=5072b532e4b088be4c29ea5a
+datastore.name=freedom-travel-deals
+datastore.collection.deals.name=deals-of-the-week
+
+####################################
+# File Chooser Restrictions
+####################################
+filechooser.filterby=png;jpg;jpeg
