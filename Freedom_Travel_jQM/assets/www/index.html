@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Freedom Travel</title>
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+	<link rel="stylesheet"  href="js/jQM/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="leaflet/leaflet.css" />  
+	
+	<script type="text/javascript" src="js/jQM/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jQM/jquery.mobile-1.1.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/cordova-1.9.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/myJavaScript.js"></script>
+	<script type="text/javascript" src="leaflet/leaflet.js"></script>
+	
+	
+  </head>
+  
+  <body> 
+	
+	<!-- HOME -->
+    <div data-role="page" data-theme="b" id="Home" 
+    	style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+		<div data-role="header">
+        	<h1>Freedom Travel</h1>
+        	<div data-role="navbar" data-iconpos="top">
+        		<ul>
+        			<li><a href="#Home" data-icon="home">Home</a></li>
+        			<li><a href="#Weekly-Deals" data-icon="star">Hot Deals</a>
+        			<li><a href="#Enquiries" data-icon="info">Contact Us</a>
+        		</ul>
+        	</div>
+		</div>
+        <div data-role="content">
+        	<img src='images/freedom-travel-banner.png' style='width: 100%; padding-bottom: 20px;'/>
+			<div class="ui-grid-a" style='padding-left: 50px;'>
+				<div class="ui-block-a">
+					<a href="#Weather"><img src='images/weather.png'/><br/>Weather</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#Check-List"><img src='images/checklist.png'/><br/>Checklist</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- WEEKLY DEALS -->
+    <div data-role="page" id="Weekly-Deals" style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+		<div data-role="header">
+        	<h1>Weekly Deals</h1>
+        	<div data-role="navbar" data-iconpos="top">
+        		<ul>
+        			<li><a href="#Home" data-icon="home">Home</a></li>
+        			<li><a href="#Weekly-Deals" data-icon="star">Hot Deals</a>
+        			<li><a href="#Enquiries" data-icon="info">Contact Us</a>
+        		</ul>
+        	</div>
+		</div>
+        
+        <div data-role="content">
+			<ul data-role="listview" data-split-theme="d" id="Weekly-Deals_list">
+				<li id="Weekly-Deals_list_Deal_1">  
+   					<h3><a id="Weekly-Deals_list_Deal_1_hdr"  href="#Hot-Deal_1">Carribean Cruise</a></h3>  
+   					<img src="images/caribbean_cruise.jpg" style='float: left;'/>
+   					<p>
+   						5 night cruise on the Royal Princess.<br/>
+   						All food and drink on board is <i>FREE</i>.<br/>
+   						Choice of colours for the liferaft<br/>
+   						should the ship hit an ice-berg!
+   					</p>  
+				</li> 
+				<li id="Weekly-Deals_list_Deal_2">  
+   					<h3><a id="Weekly-Deals_list_Deal_2_hdr"  href="#Hot-Deal_2">Beautiful Bali</a></h3>  
+   					<img src="images/bali.jpg" style='float: left;'/>
+   					<p>
+   						7 nights in the Kings Stay resort<br/>
+   						on the white sands beanches of Bali.<br/>
+   						Perfect for honeymoons at 2,300<br/>
+   						for a full flight and accomodation package.
+   					</p>    
+				</li> 
+				<li id="Weekly-Deals_list_Deal_3">  
+   					<h3><a id="Weekly-Deals_list_Deal_3_hdr"  href="#Hot-Deal_3">Exotic Japan</a></h3>  
+   					<img src="images/japan.jpg" style='float: left;'/>
+   					<p>
+   						Explore the exotic intruige of the<br/>
+   						Orient with our 5 night excursion in<br/>
+   						Japan. At 1,800 for our flights and<br/>
+   						accomodation package, this once in a<br/>
+   						lifetime trip is too good to refuse.
+					</p>    
+				</li> 
+			</ul> 
+		</div>
+	</div>
+	
+	<!-- ENQUIRIES -->
+    <div data-role="page" id="Enquiries" style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+		<div data-role="header">
+        	<h1>Enquiries</h1>
+        	<div data-role="navbar" data-iconpos="top">
+        		<ul>
+        			<li><a href="#Home" data-icon="home">Home</a></li>
+        			<li><a href="#Weekly-Deals" data-icon="star">Hot Deals</a>
+        			<li><a href="#Enquiries" data-icon="info">Contact Us</a>
+        		</ul>
+        	</div>
+		</div>
+        
+        <div data-role="content">
+			<div data-role="collapsible-set">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Celbridge Office</h3>
+					<address>
+						<img src='images/celbridge_shop.jpg' 
+							style='float: left; width: 55%; height: 55%;'/>
+						Main Street,<br/>
+						Celbridge,<br/>
+						Co. Kildare<br/>
+					</address>
+					
+					<br/><br/><br/><br/><br/><br/><br/>
+					
+					<a href="tel:016270011" style='padding-right: 35px;'>
+						<img src="images/phone-icon.png"/>
+					</a>
+					<a href="mailto:sales@freedomtravel.ie" style='padding-right: 35px;'>
+						<img src="images/Mail-icon.png"/>
+					</a>
+					<a href="findus.html"><img src="images/map-icon.png"/></a>
+				</div>
+	
+				<div data-role="collapsible">
+					<h3>Leixlip Office</h3>
+					<address>
+						<img src='images/leixlip_shop.jpg' 
+							style='float: left; width: 55%; height: 55%;'/>
+						Main Street, <br/>
+						Leixlip, <br/>
+						Co. Kildare <br/>
+					</address>
+					
+					<br/><br/><br/><br/><br/><br/><br/>
+					
+					<a href="tel:016270011" style='padding-right: 35px;'>
+						<img src="images/phone-icon.png"/>
+					</a>
+					<a href="mailto:sales@freedomtravel.ie" style='padding-right: 35px;'>
+						<img src="images/Mail-icon.png"/>
+					</a>
+					<a href="findus.html"><img src="images/map-icon.png"/></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!-- NON_MAIN NAV PAGE -->
+	
+	<!-- Check List -->
+	<div data-role="page" id="Check-List"
+		style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+		<div data-role="header">
+        	<a href="#Home" data-icon="home">Home</a>
+        	<h1>Check-List</h1>
+		</div>
+        	<input type="checkbox" name="checkbox-name" id="checkbox-1" />
+  			<label for="checkbox-1" data-icon='star' data-iconpos="right">Passports</label>
+
+			<input type="checkbox" name="checkbox-name" id="checkbox-2" />
+  			<label for="checkbox-2" data-iconpos="right">Flight Tickets</label>
+  			
+        	<input type="checkbox" name="checkbox-name" id="checkbox-3" />
+  			<label for="checkbox-3" data-iconpos="right">Foreign Currency</label>
+        <div data-role="content">
+		
+		</div>
+	</div>
+	
+	<!--  WEATHER -->
+	<div data-role="page" id="Weather" 
+		style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+		
+		<div data-role="header">
+			<a href="#Home" data-icon="home">Home</a>
+			<h1>Weather</h1>
+		</div>
+		
+		<div data-role="content">
+			<div data-role="fieldcontain">
+    			<label for="destinationInputField">Destination</label>
+    			<input type="text" name="name" id="destinationInputField" placeholder="Enter Your Destination.."/>
+			</div>
+			<button data-role="button" onclick="checkTheWeather();">Display Weather</button>
+			<div id="weatherDisplayArea"></div>
+		</div>
+	</div>
+  </body>
+</html>

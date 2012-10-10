@@ -1,0 +1,68 @@
+<!-- FIND US -->
+<div data-role="page" id="Find-Us-Celbridge"
+	style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+	<div data-role="header">
+       	<a href="index.html" data-icon="home">Home</a>
+       	<h1>Find Us</h1>
+	</div>
+       
+    <div data-role="content">
+    	<div id="map" style='height: 0px;'></div>
+    	<!-- Update map size to be full screen -->
+    	<script type="text/javascript">
+    		$('#map').css('height', ((window.innerHeight * 8) / 10 ));
+    	</script>
+    	
+    	<button id="panToCelbridge" data-role="button"
+    		 onclick="panToArea(freedomTravelCelbridge);">Pan To Celbridge</button>
+    	<button id="panToCelbridge" data-role="button" 
+    		onclick="panToArea(freedomTravelLeixlip);">Pan To Leixlip</button>
+   			
+		<script>
+			/* Using buttons to pan to whichever office the user requests
+				This is because leaflet goes a bit wonky with its display
+				if I use map.setView as opposed to map.locate */
+			var freedomTravelCelbridge = new L.LatLng(53.340007, -6.538265);
+			var freedomTravelLeixlip = new L.LatLng(53.363521, -6.491600);
+			function panToArea(latLng) {
+				L.marker(latLng).addTo(map)
+	        		.bindPopup("<p><b>Freedom Travel</b><br/>Love to travel</p>").openPopup();
+			}	
+			
+			/* Define OpenStreetMap tile for use*/
+			L.TileLayer.Common = L.TileLayer.extend({
+				initialize: function (options) {
+					L.TileLayer.prototype.initialize.call(this, this.url, options);
+					}
+				});
+			
+			L.TileLayer.OpenStreetMap = L.TileLayer.Common.extend({
+				url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+				options: {maxZoom: 16, 
+					attribution: '& <a href="http://openstreetmap.org">OpenStreetMap</a>'}
+				});
+			
+			/* Define the map and initialize to user location*/
+			var map = L.map('map');
+			var openStreetMap  = new L.TileLayer.OpenStreetMap();			
+			openStreetMap.addTo(map);
+			
+			function onLocationFound(e) {
+			    var radius = e.accuracy / 2;
+
+			    L.marker(e.latlng).addTo(map)
+			        .bindPopup("You are within " + radius + " meters of	this point").openPopup();
+			    L.circle(e.latlng, radius).addTo(map);
+			}
+
+			function onLocationError(e) {
+			    alert(e.message);
+			}
+
+			map.on('locationfound', onLocationFound);
+			map.on('locationerror', onLocationError);
+			
+			map.locate({setView: true, maxZoom: 15});
+		</script>
+	</div>
+</div>
