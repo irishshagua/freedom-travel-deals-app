@@ -4,7 +4,7 @@
 $(document).ready(function() {
     // Swipe from home page
 	$('#Home').live("swipeleft", function(){
-        $.mobile.changePage("#Weekly-Deals", "slide", false, true);
+        $.mobile.changePage("#Weekly-Deals", "fade", false, true);
     });
 	$('#Home').live("swiperight", function(){
         $.mobile.changePage("#Enquiries", "flip", false, true);
@@ -12,15 +12,15 @@ $(document).ready(function() {
     
     // Swipes from Weekly Deals
     $('#Weekly-Deals').live("swiperight", function(){
-        $.mobile.changePage("#Home", "slide", true, true);
+        $.mobile.changePage("#Home", "fade", true, true);
     });
     $('#Weekly-Deals').live("swipeleft", function(){
-        $.mobile.changePage("#Enquiries", "slide", true, true);
+        $.mobile.changePage("#Enquiries", "fade", true, true);
     });
     
     // Swipe from Enquiries
     $('#Enquiries').live("swiperight", function(){
-        $.mobile.changePage("#Weekly-Deals", "slide", false, true);
+        $.mobile.changePage("#Weekly-Deals", "fade", false, true);
     });
     $('#Enquiries').live("swipeleft", function(){
         $.mobile.changePage("#Home", "flip", false, true);
@@ -79,4 +79,70 @@ function checkTheWeather() {
 	});
         
 	navigator.notification.activityStop();
+}
+
+
+/******************************************
+ * Mongo Query Stuff
+ ******************************************/
+var baseUrl='https://api.mongolab.com/api/1'
+var generatedPageMap = new Object
+
+// Add page open event listener
+$('#Weekly-Deals').live('pageshow',function(event, ui){
+	// Display loading notification
+	navigator.notification.activityStart();
+	
+	performMongoDBQueries();
+});
+
+function performMongoDBQueries() {
+	   
+	var apiKey = '?apiKey=5072b532e4b088be4c29ea5a';
+	var dbName = '/freedom-travel-deals';
+	var collectionName = '/deals-of-the-week';
+	   
+	var queryString = baseUrl + '/databases' +
+	                       dbName + '/collections' +
+	                       collectionName;
+
+	$.ajaxSetup({
+	  error: AjaxError,
+	  cache: false
+	});
+
+
+	$.get(queryString + apiKey, function (response) {   
+		$('#Weekly-Deals_list').empty();
+		
+		$.each(response, function() {
+			var newPage = $('<div data-role="page" id="'+this.id+'" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));"><div data-role="header"><h1>Hot Deals</h1></div><div data-role="content"><h1>'+this.title+'</h1><p><img src="data:image/png;base64,'+this.image+
+	    			'" style="float: left; width: 70%; margin-right: 2%"/>'+this.body+'</p></div></div>');
+	    	newPage.appendTo( $.mobile.pageContainer );
+	    	generatedPageMap[this.id] = newPage
+	    	
+	    	$('#Weekly-Deals_list').append('<li id="'+this.id+'"><h3><a onclick="alert(\"Clicked\");">'+
+	    			this.title+'</a></h3><img src="data:image/png;base64,'+this.image+
+	    			'" style="float: left;"/><p>'+this.body+'</p></li>');
+	    	
+//	    	$('#'+this.id).click(function(e) {
+//	    		$.mobile.changePage(generatedPageMap[this.id]);
+//	    	});
+	    });
+	    
+	    $('#Weekly-Deals_list').listview('refresh');
+	    navigator.notification.activityStop();
+	});
+}
+
+function AjaxError(x, e) {
+	if (x.status == 0) {
+		alert(' Check Your Network.');
+	} else if (x.status == 404) {
+		alert('Requested URL not found.');
+	} else if (x.status == 500) {
+	    alert('Internel Server Error.');
+	}  else {
+	    alert('Unknow Error.\n' + x.responseText);
+	}
 }
