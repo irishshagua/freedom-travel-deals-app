@@ -85,8 +85,9 @@ function checkTheWeather() {
 /******************************************
  * Mongo Query Stuff
  ******************************************/
-var baseUrl='https://api.mongolab.com/api/1'
-var generatedPageMap = new Object
+var baseUrl='https://api.mongolab.com/api/1';
+var _selectIndex = 0;
+
 
 // Add page open event listener
 $('#Weekly-Deals').live('pageshow',function(event, ui){
@@ -116,26 +117,31 @@ function performMongoDBQueries() {
 		$('#Weekly-Deals_list').empty();
 		
 		$.each(response, function() {
-			var newPage = $('<div data-role="page" id="'+this.id+'" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));"><div data-role="header"><h1>Hot Deals</h1></div><div data-role="content"><h1>'+this.title+'</h1><p><img src="data:image/png;base64,'+this.image+
+			var newPageId = "page_" + _selectIndex++;
+			var newLiId = "li_" + _selectIndex++;
+			var newPage = $('<div data-role="page" id="'+newPageId+'" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));"><div data-role="header"><h1>Hot Deals</h1></div><div data-role="content"><h1>'+this.title+'</h1><p><img src="data:image/png;base64,'+this.image+
 	    			'" style="float: left; width: 70%; margin-right: 2%"/>'+this.body+'</p></div></div>');
-	    	newPage.appendTo( $.mobile.pageContainer );
-	    	generatedPageMap[this.id] = newPage
 	    	
-	    	$('#Weekly-Deals_list').append('<li id="'+this.id+'"><h3><a onclick="alert(\"Clicked\");">'+
+	    	$('#Weekly-Deals_list').append('<li id="'+newLiId+'"><h3><a href="#'+newPageId+'">'+
 	    			this.title+'</a></h3><img src="data:image/png;base64,'+this.image+
 	    			'" style="float: left;"/><p>'+this.body+'</p></li>');
 	    	
-//	    	$('#'+this.id).click(function(e) {
-//	    		$.mobile.changePage(generatedPageMap[this.id]);
-//	    	});
+	    	$('#'+newLiId).live('click', function() {
+	    		$.mobile.changePage($('#'+newPageId));
+	    	});
+	    	
+	    	newPage.appendTo( $.mobile.pageContainer);
 	    });
-	    
+		
 	    $('#Weekly-Deals_list').listview('refresh');
+	    
 	    navigator.notification.activityStop();
 	});
 }
 
 function AjaxError(x, e) {
+	navigator.notification.activityStop();
+	
 	if (x.status == 0) {
 		alert(' Check Your Network.');
 	} else if (x.status == 404) {
