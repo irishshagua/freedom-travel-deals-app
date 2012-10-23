@@ -11,6 +11,9 @@ public class StaticUtilityClass {
 
 	private static Logger log = Logger.getGlobal();
 	
+	public static void userNotification(String msg) {
+		JOptionPane.showMessageDialog(null, msg);
+	}
 	
 	public static void logSystemError(String msg, Throwable e) {
 		JOptionPane.showMessageDialog(null, 
