@@ -1,5 +1,8 @@
 package com.mooneyserver.freedomtravel.cms.util;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -33,6 +36,15 @@ public class StaticUtilityClass {
 		log.log(Level.SEVERE, msg, e);
 	}
     
+	public static void copyToSystemClipboard(String symbol) {
+		Clipboard clipboard = Toolkit.getDefaultToolkit()
+				.getSystemClipboard();
+		
+		StringSelection data = new StringSelection(
+				symbol == null ? "" : symbol);
+		clipboard.setContents(data, data);
+	}
+	
     /*
      * Convert a Throwable's stack trace to a String
      */
