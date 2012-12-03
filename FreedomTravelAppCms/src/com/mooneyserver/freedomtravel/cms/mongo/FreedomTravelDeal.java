@@ -44,7 +44,7 @@ public class FreedomTravelDeal {
 	public void setImage(BufferedImage image) throws IOException {
 		byte[] imageInByte;
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(image, "png", baos);
+		ImageIO.write(image, "jpeg", baos);
 		baos.flush();
 		imageInByte = baos.toByteArray();
 		baos.close();

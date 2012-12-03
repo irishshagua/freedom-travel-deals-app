@@ -1,22 +1,16 @@
 package com.mooneyserver.freedomtravel.cms.util;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Locale;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
-import javax.imageio.stream.ImageOutputStream;
+
+import org.imgscalr.Scalr;
 
 public class ImageCompressor {
+	
+	private static String TMP_IMG_FILE = "FT_TMP_SCALED_IMG";
 	
 	public static BufferedImage getScaledImage(File file) {
 
@@ -40,45 +34,17 @@ public class ImageCompressor {
 	}
 
 	private static BufferedImage scaleImage(BufferedImage image) {
-		double scale = ((double) image.getHeight() / (double) image.getWidth());
-		int newW = 400;
-		int newH = (int) (400D * scale);
-		BufferedImage resizedImage = new BufferedImage(newW, newH,
-				image.getType());
-		Graphics2D g = resizedImage.createGraphics();
-		g.drawImage(image, 0, 0, newW, newH, null);
-		g.dispose();
-		g.setComposite(AlphaComposite.Src);
-		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-		RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		g.setRenderingHint(RenderingHints.KEY_RENDERING,
-		RenderingHints.VALUE_RENDER_QUALITY);
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-		RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		return compressTest(resizedImage);
-	}
-
-	private static BufferedImage compressTest(BufferedImage image) {
-
+		BufferedImage scaledImg = Scalr.resize(image, Scalr.Method.ULTRA_QUALITY, 400, Scalr.OP_ANTIALIAS, Scalr.OP_BRIGHTER);
+		File tmp;
 		try {
-			Iterator<?> iter = ImageIO.getImageWritersByFormatName("jpg");
-			ImageWriter writer = (ImageWriter) iter.next();
-			File f = File.createTempFile("tmpScaleImg", "JPG");
-			ImageOutputStream ios = ImageIO.createImageOutputStream(f);
-			writer.setOutput(ios);
-			ImageWriteParam iwparam = new JPEGImageWriteParam(
-					Locale.getDefault());
-			iwparam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-			iwparam.setCompressionQuality(1.0F);
-			writer.write(null, new IIOImage(image, null, null), iwparam);
-			ios.flush();
-			writer.dispose();
-			ios.close();
-			return ImageIO.read(f);
-
-		} catch (Exception e) {
-			StaticUtilityClass.logSystemError("Image Compression failed", e);
+			tmp = File.createTempFile(TMP_IMG_FILE, null);
+			ImageIO.write(scaledImg, "jpeg", tmp);
+			
+			return ImageIO.read(tmp);
+		} catch (IOException e) {
+			StaticUtilityClass.logSystemError(
+					"Image Compression Failed", e);
 			return image;
 		}
 	}
@@ -92,5 +58,4 @@ public class ImageCompressor {
 		String pre = ("KMGTPE").charAt(exp - 1) + ("i");
 		return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
 	}
-
 }
