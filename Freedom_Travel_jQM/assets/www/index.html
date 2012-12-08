@@ -6,23 +6,22 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-	<link rel="stylesheet"  href="js/jQM/jquery.mobile-1.1.0.min.css" />
-	<link rel="stylesheet" href="leaflet/leaflet.css" />  
+	<link rel="stylesheet"  href="css/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="css/leaflet.css" />
+	<link rel="stylesheet" href="css/myStyle.css" />  
 	
-	<script type="text/javascript" src="js/jQM/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="js/jQM/jquery.mobile-1.1.0.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/cordova-2.1.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/myJavaScript.js"></script>
-	<script type="text/javascript" src="leaflet/leaflet.js"></script>
-	
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.1.0.min.js"></script>
+	<script type="text/javascript" src="js/cordova-2.1.0.js"></script>
+	<script type="text/javascript" src="js/myJavaScript.js"></script>
+	<script type="text/javascript" src="js/leaflet.js"></script>
 	
   </head>
   
   <body> 
 	
 	<!-- HOME -->
-    <div data-role="page" data-theme="b" id="Home" 
-    	style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+    <div data-role="page" data-theme="b" id="Home" class="blue-grad-backg">
 		<div data-role="header">
         	<h1>Freedom Travel</h1>
         	<div data-role="navbar" data-iconpos="top">
@@ -35,7 +34,7 @@
 		</div>
         <div data-role="content">
         	<a href="#Weekly-Deals">
-        		<img src='images/freedom-travel-banner.png' style='width: 100%; border-top-width: 4px; border-bottom-width: 4px; border-top-style: double; border-bottom-style: double; border-top-color: #E1A60A; border-bottom-color: #E1A60A; padding: 8px 0px;'/>
+        		<img src='images/freedom-travel-banner.png' id='home-screen-banner'/>
         	</a>
 			<div class="ui-grid-b" style="padding-left:5%;">
 				<div class="ui-block-a">
@@ -63,7 +62,7 @@
 	</div>
 	
 	<!-- WEEKLY DEALS -->
-    <div data-role="page" id="Weekly-Deals" style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+    <div data-role="page" id="Weekly-Deals" class="blue-grad-backg">
 		<div data-role="header">
         	<h1>Weekly Deals</h1>
         	<div data-role="navbar" data-iconpos="top">
@@ -86,7 +85,7 @@
 
 	 
 	<!-- ENQUIRIES -->
-    <div data-role="page" id="Enquiries" style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+    <div data-role="page" id="Enquiries" class="blue-grad-backg">
 		<div data-role="header">
         	<h1>Enquiries</h1>
         	<div data-role="navbar" data-iconpos="top">
@@ -112,10 +111,10 @@
 					
 					<br/><br/><br/><br/><br/><br/><br/>
 					
-					<a href="tel:016270011" style='padding-right: 35px;'>
+					<a href="tel:016270011" class="find-us-icon-seperator">
 						<img src="images/phone-icon.png"/>
 					</a>
-					<a href="mailto:sales@freedomtravel.ie" style='padding-right: 35px;'>
+					<a href="mailto:sales@freedomtravel.ie" class="find-us-icon-seperator">
 						<img src="images/Mail-icon.png"/>
 					</a>
 					<a href="findus.html"><img src="images/map-icon.png"/></a>
@@ -133,10 +132,10 @@
 					
 					<br/><br/><br/><br/><br/><br/><br/>
 					
-					<a href="tel:016060000" style='padding-right: 35px;'>
+					<a href="tel:016060000" class="find-us-icon-seperator">
 						<img src="images/phone-icon.png"/>
 					</a>
-					<a href="mailto:sales@freedomtravel.ie" style='padding-right: 35px;'>
+					<a href="mailto:sales@freedomtravel.ie" class="find-us-icon-seperator">
 						<img src="images/Mail-icon.png"/>
 					</a>
 					<a href="findus.html"><img src="images/map-icon.png"/></a>
@@ -150,8 +149,7 @@
 	<!-- NON_MAIN NAV PAGE -->
 	
 	<!-- Check List -->
-	<div data-role="page" id="Check-List"
-		style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+	<div data-role="page" id="Check-List" class="blue-grad-backg">
 		<div data-role="header">
         	<a href="#Home" data-icon="home">Home</a>
         	<h1>Check-List</h1>
@@ -187,8 +185,7 @@
 	</div>
 	
 	<!--  WEATHER -->
-	<div data-role="page" id="Weather" 
-		style='background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));'>
+	<div data-role="page" id="Weather" class="blue-grad-backg">
 		
 		<div data-role="header">
 			<a href="#Home" data-icon="home">Home</a>

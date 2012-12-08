@@ -1,0 +1,18 @@
+.blue-grad-backg {
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));
+}
+
+.find-us-icon-seperator {
+	padding-right: 35px;
+}
+
+#home-screen-banner {
+	width: 100%; 
+	border-top-width: 4px; 
+	border-bottom-width: 4px; 
+	border-top-style: double; 
+	border-bottom-style: double; 
+	border-top-color: #E1A60A; 
+	border-bottom-color: #E1A60A; 
+	padding: 8px 0px;
+}
