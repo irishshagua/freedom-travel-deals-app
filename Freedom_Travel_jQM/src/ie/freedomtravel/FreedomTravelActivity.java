@@ -3,7 +3,8 @@ package ie.freedomtravel;
 import org.apache.cordova.DroidGap;
 import android.os.Bundle;
 
-public class MyPhoneGapActivity extends DroidGap {
+public class FreedomTravelActivity extends DroidGap {
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
