@@ -10,14 +10,6 @@ $(document).ready(function() {
         $.mobile.changePage("#Enquiries", "flip", false, true);
     });
     
-    // Swipes from Weekly Deals
-    $('#Weekly-Deals').live("swiperight", function(){
-        $.mobile.changePage("#Home", "fade", true, true);
-    });
-    $('#Weekly-Deals').live("swipeleft", function(){
-        $.mobile.changePage("#Enquiries", "fade", true, true);
-    });
-    
     // Swipe from Enquiries
     $('#Enquiries').live("swiperight", function(){
         $.mobile.changePage("#Weekly-Deals", "fade", false, true);
