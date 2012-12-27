@@ -129,14 +129,14 @@ function performMongoDBQueries() {
 		$('#Weekly-Deals_list').empty();
 		
 		$.each(response, function() {
-			var detailsTable = '<table>'+
+			var detailsTable = '<div class="deal-details"><table>'+
 							   '<tr><td><b>Dest:</b></td><td>'+this.details.destination+'</td></tr>'+
 							   '<tr><td><b>Price:</b></td><td>'+this.details.price+'</td></tr>'+
 							   '<tr><td><b>Date:</b></td><td>'+this.details.date+'</td></tr>'+
 							   '<tr><td><b>Length:</b></td><td>'+this.details.duration+'</td></tr>'+
 							   '<tr><td><b>Accom:</b></td><td>'+this.details.accomodation+'</td></tr>'+
 							   '<tr><td><b>Basis:</b></td><td>'+this.details.basis+'</td></tr>'+
-							   '</table>';
+							   '</table></div>';
 			var newPageId = "page_" + _selectIndex++;
 			var newLiId = "li_" + _selectIndex++;
 			var newPage = $('<div data-role="page" id="'+newPageId+'" class="blue-grad-backg">'+
@@ -145,12 +145,12 @@ function performMongoDBQueries() {
 						'<h1>Hot Deals</h1>'+
 					'</div>'+
 					'<div data-role="content">'+
-						'<center><h1>'+this.title+'</h1></center>'+
-						'<img src="data:image/png;base64,'+this.image+'" style="width: 100%;"/>'+
+						'<div class="deal-header"><center><h1>'+this.title+'</h1></center></div>'+
+						'<img src="data:image/png;base64,'+this.image+'" class="img-shadow"/>'+
 						detailsTable +
 						'<p>' + this.body + '</p>'+
 						'<br/><br/>'+
-						'<center><a href="mailto:sales@freedomtravel.ie?subject=Enquiry: '+this.title+'">'+
+						'<center><a href="mailto:sales@freedomtravel.ie?subject=Enquiry: '+this.title+'" class="no-underline">'+
 							'<img src="images/Mail-icon.png"/><br/>'+
 							'Deal Enquiry'+
 						'</a></center>'+
@@ -158,7 +158,7 @@ function performMongoDBQueries() {
 	    	
 	    	$('#Weekly-Deals_list').append('<li id="'+newLiId+'"><h3><a href="#'+newPageId+'">'+
 	    			this.title+'</a></h3><img src="data:image/png;base64,'+this.image+
-	    			'" style="float: left;"/>'+detailsTable+'</li>');
+	    			'" class="list-img"/>'+detailsTable+'</li>');
 	    	
 	    	$('#'+newLiId).live('click', function() {
 	    		$.mobile.changePage($('#'+newPageId));

@@ -2,6 +2,37 @@
 	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));
 }
 
+.deal-details {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    margin-bottom: 0.5em;
+    background-color:rgba(215, 245, 210, 0.4);
+}
+
+.deal-header {
+	border-radius: 1em 2em 1em 2em;
+    margin-bottom: 1em;
+    background-color:rgba(215, 245, 210, 0.6); 
+	color: #009999;	
+	text-shadow: 0 0 5px #00FFCC, 0 0 10px #00FFCC, 0 0 15px #00FFCC;
+	font-family: Bookman, serif;
+	font-weight: 500;
+	font-variant: small-caps;
+}
+
+.list-img {
+	float: left;
+	
+}
+
+.no-underline {
+	text-decoration: none;
+}
+
+.img-shadow {
+	width: 100%;
+	/* TODO: Need to get the shadow working here */
+}
+
 .find-us-icon-seperator {
 	padding-right: 35px;
 }
