@@ -1,0 +1,41 @@
+/************************
+ * Build file for the Android
+ * Freedom Travel Deals app
+ ************************/
+// Build script will use the gradle android plugin
+buildscript {
+    // Temporarily removing this as maven snapshot is out of date with
+    // latest android SDK
+    /*
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'org.gradle.api.plugins', name: 'gradle-android-plugin', version: '1.2.2'
+    }
+    */
+
+    // Built gradle plugin from sources to avoid
+    // Missing attribute libraryRFilePathOut
+    // error msg. ref: https://github.com/jvoegele/gradle-android-plugin/issues/91#issuecomment-10395503
+    dependencies {
+        classpath files('/opt/gradle/lib/plugins/gradle-android-plugin-1.2.2-SNAPSHOT.jar')
+    }
+}
+
+apply plugin: 'android'
+
+// Compile time dependencies
+dependencies { 
+    compile fileTree(dir: 'libs', include: '*.jar')
+}  
+
+// Not using convention. Will update this at a later date
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+  }
+}
