@@ -11,7 +11,7 @@ public class AppConstants {
 	
 	public static BufferedImage loadLandingPageImgFromJar() {
 		try {
-			return ImageIO.read(AppConstants.class.getResource("landingPage.png"));
+			return ImageIO.read(AppConstants.class.getResource("rsc/landingPage.png"));
 		} catch (IOException e) {
 			return new BufferedImage(0, 0, 0);
 		}
@@ -22,7 +22,7 @@ public class AppConstants {
 	 */
 	public static BufferedImage loadHolidayImgFromJar() {
 		try {
-			return ImageIO.read(AppConstants.class.getResource("smallHoliday.png"));
+			return ImageIO.read(AppConstants.class.getResource("rsc/smallHoliday.png"));
 		} catch (IOException e) {
 			return new BufferedImage(0, 0, 0);
 		}

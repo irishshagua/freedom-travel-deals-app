@@ -231,7 +231,7 @@ public class ViewEditSingleDeal extends JDialog implements ChangeListener,
 		charCopyDropdownBtn = new JButton("");
 		charCopyDropdownBtn.setIcon(new ImageIcon
 				(ViewEditSingleDeal.class.getResource
-						("/com/mooneyserver/freedomtravel/cms/util/dropdown_icon.gif")));
+						("/com/mooneyserver/freedomtravel/cms/util/rsc/dropdown_icon.gif")));
 		charCopyDropdownBtn.setBounds(10, 11, 27, 23);
 		charCopyDropdownBtn.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
