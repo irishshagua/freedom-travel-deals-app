@@ -1,0 +1,39 @@
+/************************
+ * Build file for the CMS system
+ * for the Freedom Travel Deals app
+ ************************/
+apply plugin: 'java'
+
+
+// Pull required dependencies from
+// maven repository
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.7'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.2.2'
+    compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+}
+
+
+// Set the resources directory to the main
+// directory as ourimages are located in a
+// the package: 
+//   tk.mooneyserver.freedomtravel.cms.util.rsc
+sourceSets.main.resources.srcDir 'src/main/java'
+
+jar {
+    // This will extract the compile time dependcies and place them in the fat jar
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    manifest {
+        attributes(
+            'Implementation-Title'   : 'Freedom Travel Deals App CMS', 
+            'Implementation-Version' : '0.1',
+            'Created-By'             : 'Freedom Travel',
+            'Main-Class'             : 'com.mooneyserver.freedomtravel.cms.AppLauncher',
+        )
+    }
+}
