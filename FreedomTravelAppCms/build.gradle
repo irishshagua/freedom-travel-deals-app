@@ -3,6 +3,7 @@
  * for the Freedom Travel Deals app
  ************************/
 apply plugin: 'java'
+apply plugin: 'eclipse'
 
 
 // Pull required dependencies from
