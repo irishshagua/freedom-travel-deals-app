@@ -17,6 +17,7 @@
 	font-family: Bookman, serif;
 	font-weight: 500;
 	font-variant: small-caps;
+	text-align: center;
 }
 
 .list-img {
@@ -46,4 +47,30 @@
 	border-top-color: #E1A60A; 
 	border-bottom-color: #E1A60A; 
 	padding: 8px 0px;
+}
+
+#weather-view {
+	background-color:rgba(255,0,255,0.2);
+	border-radius: 15px;
+	list-style-type: none;
+}
+
+#weather-view li {
+	text-align: center;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	padding-right: 1em;
+}
+
+#weather-view li.forecast {
+	border-top: dashed #C0C0C0;
+}
+
+#weather-view li span.day {
+	float: left;
+}
+
+#weather-view li span.temp {
+	float: right;
+	text-align: left;
 }

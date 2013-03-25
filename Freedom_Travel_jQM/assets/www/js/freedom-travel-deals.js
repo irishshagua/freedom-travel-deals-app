@@ -1,5 +1,5 @@
 /***************************
- * Page Flow Functionality
+<ul id='weather-view'> * Page Flow Functionality
  ***************************/
 $(document).ready(function() {
 	// Swipe from home page
@@ -60,15 +60,18 @@ function checkTheWeather() {
 	    		var city = json.query.results.channel.location.city;
 	    		var country = json.query.results.channel.location.country;
 	    		
-	            var str1 = "";
-	            str1 = str1.concat("Weather for " + city + ", " + country + "<br/>");
-	            str1 = str1.concat("<br/>Today , "+todaysOutlook+" "+todaysTemp+"C");
+	            var str1 = "<ul id='weather-view'><li>" + city + ", " + country + "</li>";
 	                    
 	            for (var i=0;i<2;i++){
 	            	var item = json.query.results.channel.item.forecast[i];
 	            	var imgCode	= item.code;
-	                str1 = str1.concat("<br/><img src='"+weatherImg.replace('XX', imgCode)+"'/><br/>"+item.day+", "+item.text+" [Lows: "+item.low+", Highs: "+item.high+"]");
+	            	str1 = str1.concat("<li class='forecast'><span class='day'>"
+	            			+item.day+"</span><img src='"
+	            			+weatherImg.replace('XX', imgCode)+"'/><span class='temp'>Lows: "
+	            			+item.low+"&#8451;<br/>Highs: "+item.high+"&#8451;</span></li>");
 	            }
+	            
+	            str1 = str1.concat("</ul>");
 
 	            $('#weatherDisplayArea').html("<p>"+str1+"</p>");
 	    	}
